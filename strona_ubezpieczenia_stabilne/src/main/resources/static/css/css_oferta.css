@@ -702,3 +702,28 @@ html {
 
 }
 
+.choose1 {
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 500;
+    background-color: #e2be57;
+    box-shadow: 0 15px 20px rgb(44, 41, 0);
+    color: #111111;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    border-color: #7a7a7a;
+}
+.choose1:hover{
+
+    transform: translateY(-7px);
+}
+
