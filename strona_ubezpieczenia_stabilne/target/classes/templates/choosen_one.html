@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <title>Ubezpiecz się</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href=@{/css/css_oferta.css} type="text/css">
+    <link rel="stylesheet" media="only screen and (max-width:650px)" href="/css/css_mobile.css" type="text/css">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+</head>
+
+<body>
+<div class="header">
+    <h1>
+        Doradztwo finansowo-ubezpieczeniowe
+    </h1>
+
+</div>
+
+
+
+
+<!--MENU PASKA GŁOWNEGO -->
+<div class="navbar" id="navbar">
+
+    <div class ="mobile">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn_mobile" onclick="closeNav()">&times;</a>
+            <a th:href="@{/}"><i class="fa fa-fw fa-home" style=""></i> </a>
+            <a th:href="@{/nowosci}"> Nowości </a>
+            <a th:href="@{/oferta}">Oferta</a>
+            <a th:href="@{/o-mnie}">O mnie</a>
+            <a th:href="@{/kontakt}">Kontakt</a>
+            <a th:if ="${wpis}"  th:href="@{/dodaj_wpis}">Dodaj wpis</a>
+
+
+
+        </div>
+
+        <div class="menu-container">
+            <div class="menu">
+                <span  onclick="openNav()" style="color:white; float: left; margin-left:15px;">&#9776;  </span>
+                <div class="search-container" style="margin-top:-2px;">
+                    <form action="#" th:action="@{/search}" th:object="${search}" >
+                        <label for="search_input"></label>
+                        <input type="text" placeholder="wyszukaj..." name="search" id="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- mobile -->
+    <div class="bigger">
+        <a th:href="@{/}"><i class="fa fa-fw fa-home" style=""></i> </a>
+        <a th:href="@{/nowosci}"> Nowości </a>
+        <a th:href="@{/oferta}">Oferta</a>
+        <a th:href="@{/o-mnie}">O mnie</a>
+        <a th:href="@{/kontakt}">Kontakt</a>
+        <a th:if ="${wpis}"  th:href="@{/dodaj_wpis}">Dodaj wpis</a>
+        <div class="search-container" style="float:right;margin-right:10px;margin-top:5px;">
+            <form action="#" th:action="@{/search}" th:object="${search}" >
+                <label for="search_input"></label><input type="text" placeholder="wyszukaj..." name="search" id="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+
+            </form>
+        </div>
+
+
+    </div>
+    <script>
+
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "200px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+
+
+
+</div>
+
+
+<script>
+    window.onscroll = function() {
+        myFunction1()
+    };
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+
+    function myFunction1() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky");
+            document.getElementById("navbar").style.opacity= 0.7;
+            document.getElementById("myBtn").style.display = "block";
+
+        } else {
+            navbar.classList.remove("sticky");
+            document.getElementById("navbar").style.opacity= 1.0;
+            document.getElementById("myBtn").style.display = "none";
+
+        }
+    }
+
+    window.addEventListener('scroll', stickyNavigation);
+
+</script>
+
+<script>
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
+
+<div header_top></div>
+
+<script>
+    var close = document.getElementsByClassName("closebtn");
+    var i;
+
+    for (i = 0; i < close.length; i++) {
+        close[i].onclick = function(){
+            var div = this.parentElement;
+            div.style.opacity = "0";
+            setTimeout(function(){ div.style.display = "none"; }, 600);
+        }
+    }
+</script>
+
+
+<div class="wrap_content">
+    <div class="parallax" th:style="'background-image: url('+ ${article.urlToImage} +')'" >
+        <div class=title_on_img1></div>
+        <div class="title_on_img">
+            <a th:text="${article.title}">Oferta ubezpieczeniowa</a>
+        </div>
+
+    </div>
+
+
+    <div class="content" style="font-size: 30px;">
+
+
+        <script>
+            var close = document.getElementsByClassName("closebtn");
+            var i;
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function(){
+                    var div = this.parentElement;
+                    div.style.opacity = "0";
+                    setTimeout(function(){ div.style.display = "none"; }, 600);
+                }
+            }
+        </script>
+
+        <div class = "wrapper_article">
+            <!--FORMULARZ DO WYPE ŁNIANIA DANYMI-->
+
+        </div>
+
+        <script>
+            var close = document.getElementsByClassName("closebtn");
+            var i;
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function(){
+                    var div = this.parentElement;
+                    div.style.opacity = "0";
+                    setTimeout(function(){ div.style.display = "none"; }, 600);
+                }
+            }
+        </script>
+
+        <div class="text_formatter">
+
+            <a style="font-size: 25px" th:utext="${article.content}" ></a>
+
+
+        </div>
+        <br><br>
+        <a th:href="@{/nowosci}" class = "button" style="margin-left: 10px"> Więcej artykułów </a>
+
+
+        <a th:if ="${present}"  class="button1" th:href="@{/deleteById/{id}(id=${article.id})}">Usuń wpis</a>
+
+
+
+    </div>
+
+    </div>
+
+<button onclick="topFunction()" id="myBtn" title="Idz na górę strony" ><i id="butt" class="fa fa-arrow-up" aria-hidden="true" style="font-size: 20px;"></i></button>
+
+
+    <div class="footer">
+        <div class="bigger_foo">
+            <a class="phone"><i class="fa">&#xf095;</i>
+                +48 111 222 333</a>
+            <a class=contact_mail><i class="fa fa-fw fa-envelope"></i>
+                tania_polisa@oc.pl</a>
+        </div>
+        <div class="smaller_foo">
+            <a ><i class="fa">&#xf095;</i>
+                +48 111 222 333</a>
+            <br>
+            <a ><i class="fa fa-fw fa-envelope"></i>
+                tania_polisa@oc.pl</a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

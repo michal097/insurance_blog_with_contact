@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <title>Ubezpiecz się</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" th:href=@{/css/css_oferta.css} type="text/css">
+    <link rel="stylesheet" media="only screen and (max-width:650px)" href="/css/css_mobile.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../static/css/css_oferta.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+</head>
+
+<body>
+<div class="header">
+    <h1>
+        Doradztwo finansowo-ubezpieczeniowe
+    </h1>
+
+</div>
+
+
+
+
+<!--MENU PASKA GŁOWNEGO -->
+<div class="navbar" id="navbar">
+    <div class ="mobile">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn_mobile" onclick="closeNav()">&times;</a>
+            <a th:href="@{/}"><i class="fa fa-fw fa-home" style=""></i> </a>
+            <a th:href="@{/nowosci}"> Nowości </a>
+            <a th:href="@{/oferta}">Oferta</a>
+            <a th:href="@{/o-mnie}">O mnie</a>
+            <a th:href="@{/kontakt}">Kontakt</a>
+            <a th:if ="${wpis}"  th:href="@{/dodaj_wpis}">Dodaj wpis</a>
+
+
+        </div>
+
+        <div class="menu-container">
+            <div class="menu">
+                <span  onclick="openNav()" style="color:white; float: left; margin-left:15px;">&#9776;  </span>
+                <div class="search-container" style="margin-top:-2px;">
+                    <form action="#" th:action="@{/search}" th:object="${search}" >
+                        <label for="search_input"></label>
+                        <input type="text" placeholder="wyszukaj..." name="search" id="search">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- mobile -->
+    <div class="bigger">
+        <a th:href="@{/}"><i class="fa fa-fw fa-home" style=""></i> </a>
+        <a th:href="@{/nowosci}"> Nowości </a>
+        <a th:href="@{/oferta}">Oferta</a>
+        <a th:href="@{/o-mnie}">O mnie</a>
+        <a th:href="@{/kontakt}">Kontakt</a>
+        <a th:if ="${wpis}"  th:href="@{/dodaj_wpis}">Dodaj wpis</a>
+        <div class="search-container" style="float:right;margin-right:10px;margin-top:5px;">
+            <form action="#" th:action="@{/search}" th:object="${search}" >
+                <label for="search_input"></label><input type="text" placeholder="wyszukaj..." name="search" id="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+
+            </form>
+        </div>
+
+
+    </div>
+    <script type="text/javascript" src="mobile.js"></script>
+
+
+</div>
+
+
+<script>
+    window.onscroll = function() {
+        myFunction1()
+    };
+
+    var navbar = document.getElementById("navbar");
+    var sticky = navbar.offsetTop;
+
+
+    function myFunction1() {
+        if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky");
+            document.getElementById("navbar").style.opacity= 0.7;
+            document.getElementById("myBtn").style.display = "block";
+
+        } else {
+            navbar.classList.remove("sticky");
+            document.getElementById("navbar").style.opacity= 1.0;
+            document.getElementById("myBtn").style.display = "none";
+
+        }
+    }
+
+    window.addEventListener('scroll', stickyNavigation);
+
+</script>
+
+<script>
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
+
+<form th:action="@{/kontakt}" th:object="${contact}" method="post">
+
+    <div class="wrap_content">
+        <div th:if ="${message}" class = "success_alert">
+            <span class="closebtn">&times;</span>
+            <p class="alert_text" th:text = "${message}"  > success  </p>
+        </div>
+        <div th:if="${#fields.hasErrors('clientName')}" class = "fail_alert">
+            <span class="closebtn">&times;</span>
+
+            <div class = "alert">
+                <p   th:errors="*{clientName}" style="color: white" >err</p>
+            </div>
+
+        </div>
+
+        <div th:if="${#fields.hasErrors('clientMail')}" class = "fail_alert">
+            <span class="closebtn">&times;</span>
+
+            <div class="alert">
+
+                <p   th:errors="*{clientMail}" style="color: white">err</p>
+                <a th:if="${email}" th:text="${email}"> asdasd </a>
+
+            </div>
+
+        </div>
+
+        <div th:if="${#fields.hasErrors('content')}" class = "fail_alert">
+            <span class="closebtn">&times;</span>
+
+            <div class="alert">
+                <p   th:errors="*{content}" style="color: white">err</p>
+            </div>
+
+        </div>
+        <script>
+            var close = document.getElementsByClassName("closebtn");
+            var i;
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function(){
+                    var div = this.parentElement;
+                    div.style.opacity = "0";
+                    setTimeout(function(){ div.style.display = "none"; }, 600);
+                }
+            }
+        </script>
+
+
+
+        <div class="content">
+            <div class="contact-container">
+
+
+                <div class="contact1" >
+
+                    <p><b>Pośrednitwo ubezpieczeniowo finansowe </b></p>
+                    <p><b>Jak Kowalski</b></p>
+                    <p>tel. 111 222 333</p>
+                    <p> mail. ubezpieczenia@gmail.pl</p>
+                    <p>adres. ul.Fajna 12/1 </p>
+
+                </div>
+
+                <div class="contact2">
+
+                    <p ><b>Zostaw po sobie ślad,skontaktuje się najszybciej jak to możliwe</b></p>
+
+                </div>
+                <div class= "contact7">
+
+                    <div class = "form-container">
+
+                        <div class="contact3">
+
+                            <input type="text" th:field="*{clientName}" placeholder="imie"   />
+
+
+                        </div>
+
+
+                        <div class = "contact6">
+
+
+                            <input type="text" th:field="*{clientMail}" placeholder="mail"   />
+
+                        </div>
+                        <div class = "contact4">
+
+                            <textarea type="text"  th:field="*{content}" placeholder="Wpisz treść pytania"></textarea>
+
+                        </div>
+
+                        <div class="contact5">
+                            <input onclick="myFunction()" class = "button"
+                                   type="submit" value="Wyślij" />
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+<script>
+
+    var myVar;
+    var myVar1;
+
+    function myFunction() {
+        myVar = showPage();
+        myVar1 = setTimeout(removeDisplay, 9999999);
+    }
+
+    function showPage() {
+
+
+        document.getElementById("loader").style.display = "block";
+
+    }
+    function removeDisplay(){
+        document.getElementById("loader").style.display = "none";
+
+    }
+</script>
+
+</div>
+
+</form>
+<div class="mapouter">
+    <div class="gmap_canvas">
+        <iframe width="100%"
+                height="700px"
+                id="gmap_canvas"
+                src="https://maps.google.com/maps?q=g%C3%B3rczewska%20124&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                frameborder="0"
+                scrolling="no"
+                marginheight="0"
+                marginwidth="0">
+
+        </iframe>
+        <a href="https://www.embedgooglemap.net">google html</a>
+    </div>
+    <style>
+        .mapouter{
+
+            bottom:0;
+            height:700px;
+            width:100%;}
+        .gmap_canvas {
+
+            overflow:hidden;
+            background:none!important;
+            height:700px;width:100%;
+        }
+    </style>
+</div>
+
+
+
+<button onclick="topFunction()" id="myBtn" title="Idz na górę strony" ><i id="butt" class="fa fa-arrow-up" aria-hidden="true" style="font-size: 20px;"></i></button>
+
+
+<div id="loader"></div>
+
+
+
+<div class="footer">
+    <div class="bigger_foo">
+        <a class="phone"><i class="fa">&#xf095;</i>
+            +48 111 222 333</a>
+        <a class=contact_mail><i class="fa fa-fw fa-envelope"></i>
+            tania_polisa@oc.pl</a>
+    </div>
+    <div class="smaller_foo">
+        <a ><i class="fa">&#xf095;</i>
+            +48 111 222 333</a>
+        <br>
+        <a ><i class="fa fa-fw fa-envelope"></i>
+            tania_polisa@oc.pl</a>
+    </div>
+
+</div>
+
+</body>
+
+</html>
