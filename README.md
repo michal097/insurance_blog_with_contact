@@ -15,7 +15,6 @@ Technologies used in the project:</br>
 -Spring Boot</br>
 -Spring Security</br>
 -Spring MVC</br>
--Hibernate search</br>
 -Maven </br>
 -Spring Data JPA</br>
 -Thymeleaf</br>
